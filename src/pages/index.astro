@@ -1,16 +1,97 @@
 ---
-
+import '../global.css';
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>CRAWLER • POPMUSIC AVAILABLE EVERYWHERE NOW</title>
+		<meta name="description" content="POPMUSIC, the debut album from CRAWLER, is available everywhere now." />
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="flex flex-col">
+		<!-- Background -->
+		<div class="fixed inset-0">
+			<div id="background" />
+			<div id="logo" class="opacity-0 animate-[fade_2s_ease-out]" />
+			<div id="gradient" />
+			<div id="darken" />
+		</div>
+
+		<!-- Content -->
+		<div class="mx-auto p-5 w-full lg:max-w-[900px] text-center flex flex-col flex-1 items-center relative">
+			<!-- Scroll down -->
+			<div class="flex flex-col h-[60vh] justify-end">
+				<div id="scroll-down" class="text-xs animate-[scroll-down-fade_1s_ease-out_2s_alternate_infinite] opacity-0">
+					<p>Scroll down</p>
+				</div>
+			</div>
+
+			<!-- Album -->
+			<div class="flex flex-col flex-1 items-center justify-center min-h-screen -mt-20">
+				<!-- Art -->
+				<div class="aspect-square max-w-[600px] relative">
+					<img src="/images/popmusic-blur.png" class="absolute inset-0 opacity-10" />
+					<div class="relative p-20">
+						<img src="/images/popmusic-cover.png" alt="CRAWLER • POPMUSIC" />
+					</div>
+				</div>
+				<!-- Text -->
+				<div class="flex flex-col items-center gap-5">
+					<!-- Title -->
+					<h1 class="text-5xl">POPMUSIC</h1>
+					<div class="flex flex-col items-center gap-3">
+						<!-- Subtitle -->
+						<h2 class="text-sm">debut album, out now</h2>
+						<!-- Links -->
+						<div>
+							<a href="https://open.spotify.com/album/5SkO7Ho9v9BaveY336xxlP?si=g-WTVuvoQdywp0xfgRkFMA" target="_blank">spotify</a>
+							{' • '}
+							<a href="https://music.apple.com/us/album/popmusic-ep/1782691054" target="_blank">apple music</a>
+							{' • '}
+							<a href="https://shutupcrawler.bandcamp.com/album/popmusic" target="_blank">bandcamp</a>
+							{' • '}
+							<a href="https://www.instagram.com/shutupcrawler?igsh=Zzkxamt1MTd5ZDdx" target="_blank">instagram</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- About -->
+			<div class="flex flex-col flex-1 items-center justify-center min-h-screen gap-6">
+				<h2 class="text-5xl">CRAWLER</h2>
+				<p>
+					is the electronic music project of Brandon Baun, Brian Brennan, and Daniel Scanlon.
+				</p>
+				<p>
+					Founded in 2024, the former members of post-hardcore band The Drowned God (Solid State Records) formed an experiment to make the sonically and rhythmically obscene dissolvable in the mouths and ears of the masses.
+				</p>
+				<p>
+					Shut up and go fuck yourself. POPMUSIC is available everywhere now.
+				</p>
+				<a href="https://www.instagram.com/shutupcrawler?igsh=Zzkxamt1MTd5ZDdx" target="_blank">instagram</a>
+			</div>
+		</div>
+
+		<!-- Scripts -->
+		<script>
+			// Scroll events
+			window.addEventListener('scroll', () => {
+				// Remove scroll-down if user scrolls down at least 40% the height of the viewport
+				if (window.scrollY > window.innerHeight * 0.4) {
+					document.getElementById('scroll-down')?.classList.add('scroll-down-hidden');
+				} else {
+					document.getElementById('scroll-down')?.classList.remove('scroll-down-hidden');
+				}
+
+				// If the about section is in view (the user has scrolled 170% of the height of the viewport), darken the background
+				if (window.scrollY > window.innerHeight * 1.3) {
+					document.getElementById('darken')?.classList.add('darken-visible');
+				} else {
+					document.getElementById('darken')?.classList.remove('darken-visible');
+				}
+			});
+		</script>
 	</body>
 </html>
