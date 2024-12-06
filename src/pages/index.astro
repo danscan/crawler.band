@@ -133,6 +133,9 @@ import '../global.css';
 			// Wait for all images to load before showing the content
 			Promise.all(imageLoadPromises).then(() => {
 				document.body.classList.add('loaded');
+				setTimeout(() => {
+					document.body.classList.add('hide-logo');
+				}, 400);
 			});
 		</script>
 	</body>
