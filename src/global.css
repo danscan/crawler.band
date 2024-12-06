@@ -27,12 +27,10 @@ body.loaded #loading {
 }
 
 #content {
-	display: none;
-	transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out 0.4s;
 	opacity: 0;
 }
 body.loaded #content {
-	display: block;
 	opacity: 1;
 }
 
@@ -54,12 +52,15 @@ body.loaded #content {
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: fixed;
-	/* opacity: 0.0; */
+	opacity: 0.2;
 	mix-blend-mode: lighten;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
+}
+body.loaded #logo {
+	animation: fade 2s ease-out 0.5s;
 }
 
 /* Portrait */
