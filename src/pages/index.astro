@@ -9,71 +9,89 @@ import '../global.css';
 		<meta name="viewport" content="width=device-width" />
 		<title>CRAWLER • POPMUSIC AVAILABLE EVERYWHERE NOW</title>
 		<meta name="description" content="POPMUSIC, the debut album from CRAWLER, is available everywhere now." />
+		<!-- Preload images -->
+		<link rel="preload" as="image" href="/images/bg-gradient-portrait.png" />
+		<link rel="preload" as="image" href="/images/bg-gradient-square.png" />
+		<link rel="preload" as="image" href="/images/bg-logo.png" />
+		<link rel="preload" as="image" href="/images/bg.png" />
+		<link rel="preload" as="image" href="/images/popmusic-blur.png" />
+		<link rel="preload" as="image" href="/images/popmusic-cover.png" />
 	</head>
 	<body class="flex flex-col">
-		<!-- Background -->
-		<div class="fixed inset-0">
-			<div id="background" />
-			<div id="logo" class="opacity-0 animate-[fade_2s_ease-out]" />
-			<div id="gradient" />
-			<div id="darken" />
+		<!-- Loading -->
+		<div id="loading" class="min-h-screen flex flex-col items-center justify-center text-center">
+			<p class="text-sm">Loading...</p>
+			<h1 class="text-5xl">POPMUSIC</h1>
+			<h2 class="text-sm">debut album, out now</h2>
 		</div>
 
-		<!-- Content -->
-		<div class="mx-auto p-5 w-full lg:max-w-[900px] text-center flex flex-col flex-1 items-center relative">
-			<!-- Scroll down -->
-			<div class="md:flex flex-col h-[60vh] hidden justify-end -mb-36 lg:-mb-28">
-				<div id="scroll-down" class="text-xs animate-[scroll-down-fade_1s_ease-out_2s_alternate_infinite] opacity-0">
-					<p>Scroll down</p>
-				</div>
+		<!-- Main content -->
+		<div id="content" class="min-h-screen">
+			<!-- Background -->
+			<div class="fixed inset-0">
+				<div id="background" />
+				<div id="logo" class="opacity-0 animate-[fade_2s_ease-out]" />
+				<div id="gradient" />
+				<div id="darken" />
 			</div>
-			<!--  -->
-
-			<!-- Album -->
-			<div class="flex flex-col items-center md:justify-center justify-end h-[90vh] mt-24">
-				<!-- Art -->
-				<div class="aspect-square max-w-[600px] relative">
-					<img src="/images/popmusic-blur.png" class="absolute inset-0 opacity-10" />
-					<div class="relative p-20">
-						<img src="/images/popmusic-cover.png" alt="CRAWLER • POPMUSIC" />
+	
+			<!-- Content -->
+			<div class="mx-auto p-5 w-full lg:max-w-[900px] text-center flex flex-col flex-1 items-center relative">
+				<!-- Scroll down -->
+				<div class="md:flex flex-col h-[60vh] hidden justify-end -mb-36 lg:-mb-28">
+					<div id="scroll-down" class="text-xs animate-[scroll-down-fade_1s_ease-out_2s_alternate_infinite] opacity-0">
+						<p>Scroll down</p>
 					</div>
 				</div>
-				<!-- Text -->
-				<div class="flex flex-col items-center gap-5">
-					<!-- Title -->
-					<h1 class="text-5xl">POPMUSIC</h1>
-					<div class="flex flex-col items-center gap-3">
-						<!-- Subtitle -->
-						<h2 class="text-sm">debut album, out now</h2>
-						<!-- Links -->
-						<div>
-							<a href="https://open.spotify.com/album/5SkO7Ho9v9BaveY336xxlP?si=g-WTVuvoQdywp0xfgRkFMA" target="_blank">spotify</a>
-							{' • '}
-							<a href="https://music.apple.com/us/album/popmusic-ep/1782691054" target="_blank">apple music</a>
-							{' • '}
-							<a href="https://shutupcrawler.bandcamp.com/album/popmusic" target="_blank">bandcamp</a>
-							{' • '}
-							<a href="https://www.instagram.com/shutupcrawler?igsh=Zzkxamt1MTd5ZDdx" target="_blank">instagram</a>
+				<!--  -->
+	
+				<!-- Album -->
+				<div class="flex flex-col items-center md:justify-center justify-end h-[90vh] mt-24">
+					<!-- Art -->
+					<div class="aspect-square max-w-[600px] relative">
+						<img src="/images/popmusic-blur.png" class="absolute inset-0 opacity-10" />
+						<div class="relative p-20">
+							<img src="/images/popmusic-cover.png" alt="CRAWLER • POPMUSIC" />
+						</div>
+					</div>
+					<!-- Text -->
+					<div class="flex flex-col items-center gap-5">
+						<!-- Title -->
+						<h1 class="text-5xl">POPMUSIC</h1>
+						<div class="flex flex-col items-center gap-3">
+							<!-- Subtitle -->
+							<h2 class="text-sm">debut album, out now</h2>
+							<!-- Links -->
+							<div>
+								<a href="https://open.spotify.com/album/5SkO7Ho9v9BaveY336xxlP?si=g-WTVuvoQdywp0xfgRkFMA" target="_blank">spotify</a>
+								{' • '}
+								<a href="https://music.apple.com/us/album/popmusic-ep/1782691054" target="_blank">apple music</a>
+								{' • '}
+								<a href="https://shutupcrawler.bandcamp.com/album/popmusic" target="_blank">bandcamp</a>
+								{' • '}
+								<a href="https://www.instagram.com/shutupcrawler?igsh=Zzkxamt1MTd5ZDdx" target="_blank">instagram</a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<!-- About -->
-			<div class="flex flex-col flex-1 items-center justify-center min-h-screen gap-6">
-				<h2 class="text-5xl">CRAWLER</h2>
-				<p>
-					is the electronic music project of Brandon Baun, Brian Brennan, and Daniel Scanlon.
-				</p>
-				<p>
-					Founded in 2024, the former members of post-hardcore band The Drowned God (Solid State Records) formed an experiment to make the sonically and rhythmically obscene dissolvable in the mouths and ears of the masses.
-				</p>
-				<p>
-					Shut up and go fuck yourself. POPMUSIC is available everywhere now.
-				</p>
-				<a href="https://www.instagram.com/shutupcrawler?igsh=Zzkxamt1MTd5ZDdx" target="_blank">instagram</a>
+	
+				<!-- About -->
+				<div class="flex flex-col flex-1 items-center justify-center min-h-screen gap-6">
+					<h2 class="text-5xl">CRAWLER</h2>
+					<p>
+						is the electronic music project of Brandon Baun, Brian Brennan, and Daniel Scanlon.
+					</p>
+					<p>
+						Founded in 2024, the former members of post-hardcore band The Drowned God (Solid State Records) formed an experiment to make the sonically and rhythmically obscene dissolvable in the mouths and ears of the masses.
+					</p>
+					<p>
+						Shut up and go fuck yourself. POPMUSIC is available everywhere now.
+					</p>
+					<a href="https://www.instagram.com/shutupcrawler?igsh=Zzkxamt1MTd5ZDdx" target="_blank">instagram</a>
+				</div>
 			</div>
 		</div>
+
 
 		<!-- Scripts -->
 		<script>
@@ -92,6 +110,31 @@ import '../global.css';
 				} else {
 					document.getElementById('darken')?.classList.remove('darken-visible');
 				}
+			});
+			
+			// Wait for all preloaded images to be loaded
+			const imagesToLoad = [
+				'/images/bg-gradient-portrait.png',
+				'/images/bg-gradient-square.png',
+				'/images/bg-logo.png',
+				'/images/bg.png',
+				'/images/popmusic-blur.png',
+				'/images/popmusic-cover.png'
+			];
+
+			// Create an array of promises for the images to load
+			const imageLoadPromises = imagesToLoad.map((src) => {
+				return new Promise((resolve) => {
+					const img = new Image();
+					img.src = src;
+					img.onload = resolve; // Resolve the promise when the image loads
+					img.onerror = resolve; // Resolve even if there's an error to avoid hanging
+				});
+			});
+
+			// Wait for all images to load before showing the content
+			Promise.all(imageLoadPromises).then(() => {
+				document.body.classList.add('loaded');
 			});
 		</script>
 	</body>
