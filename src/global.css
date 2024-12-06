@@ -54,7 +54,7 @@ body.loaded #content {
 	position: fixed;
 	opacity: 0.2;
 	mix-blend-mode: lighten;
-	transition: opacity 3s ease-in-out;
+	transition: opacity 2s ease-in-out;
 	top: 0;
 	right: 0;
 	bottom: 0;
