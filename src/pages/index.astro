@@ -39,7 +39,10 @@ const tracks = [
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, viewport-fit=cover"
+		/>
 		<link rel="stylesheet" href="https://use.typekit.net/sqy0qym.css" />
 		<link rel="preload" href="/images/album-art.png" as="image" />
 		{backgrounds.map((background) => (
@@ -95,7 +98,7 @@ const tracks = [
 								rel="noreferrer"
 								target="_blank"
 							>
-								Download from Dropbox
+								Dropbox
 							</a>
 							<a
 								class="action"
@@ -103,7 +106,7 @@ const tracks = [
 								rel="noreferrer"
 								target="_blank"
 							>
-								Listen on YouTube
+								YouTube
 							</a>
 						</nav>
 					</section>
@@ -176,22 +179,6 @@ const tracks = [
 		opacity: 1;
 	}
 
-	@media (max-width: 48rem) {
-		.background::after {
-			background: linear-gradient(
-				to bottom,
-				#ffaeda 0%,
-				transparent 20%,
-				transparent 80%,
-				#ffaeda 100%
-			);
-			content: "";
-			inset: 0;
-			pointer-events: none;
-			position: absolute;
-		}
-	}
-
 	main {
 		height: 200svh;
 		position: relative;
@@ -203,6 +190,19 @@ const tracks = [
 		position: sticky;
 		top: 0;
 		width: 100%;
+	}
+
+	@media (max-width: 48rem) {
+		.background {
+			height: 200svh;
+			inset: 0 0 auto;
+			position: absolute;
+		}
+
+		.cover {
+			inset: 0;
+			position: fixed;
+		}
 	}
 
 	.back,
