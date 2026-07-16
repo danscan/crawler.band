@@ -185,6 +185,8 @@ const tracks = [
 	}
 
 	.cover {
+		--cover-size: min(80vmin, calc(50vw - 2vmin));
+
 		height: 100svh;
 		overflow: hidden;
 		position: sticky;
@@ -208,11 +210,11 @@ const tracks = [
 	.back,
 	.front {
 		aspect-ratio: 1;
-		height: 80vmin;
+		height: var(--cover-size);
 		left: 50%;
 		position: absolute;
 		top: 50%;
-		width: 80vmin;
+		width: var(--cover-size);
 	}
 
 	.back {
@@ -440,6 +442,10 @@ const tracks = [
 	}
 
 	@media (orientation: portrait) {
+		.cover {
+			--cover-size: min(80vmin, calc(50svh - 2vmin));
+		}
+
 		.back {
 			transform: translate(-50%, calc(-50% + var(--split, 0px)));
 		}
@@ -509,7 +515,8 @@ const tracks = [
 		const eased = progress < 0.5
 			? 4 * Math.pow(progress, 3)
 			: 1 - Math.pow(-2 * progress + 2, 3) / 2;
-		const shift = eased * Math.min(window.innerWidth, window.innerHeight) * 0.4;
+		const size = front?.offsetWidth ?? Math.min(window.innerWidth, window.innerHeight) * 0.8;
+		const shift = eased * size / 2;
 
 		cover.style.setProperty("--split", `${shift}px`);
 		front?.setAttribute("aria-expanded", String(progress >= 0.5));
