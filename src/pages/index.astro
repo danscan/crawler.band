@@ -45,8 +45,13 @@ const tracks = [
 		/>
 		<link rel="stylesheet" href="https://use.typekit.net/sqy0qym.css" />
 		<link rel="preload" href="/images/album-art.png" as="image" />
-		{backgrounds.map((background) => (
-			<link rel="preload" href={background} as="image" />
+		{backgrounds.map((background, index) => (
+			<link
+				rel="preload"
+				href={background}
+				as="image"
+				fetchpriority={index === 0 ? "high" : "low"}
+			/>
 		))}
 		{posters.map(({ path }) => (
 			<link rel="preload" href={path} as="image" />
@@ -60,7 +65,8 @@ const tracks = [
 					class:list={{ active: index === 0 }}
 					src={background}
 					alt=""
-					decoding="async"
+					decoding={index === 0 ? "sync" : "async"}
+					fetchpriority={index === 0 ? "high" : "low"}
 				/>
 			))}
 		</div>
@@ -171,8 +177,11 @@ const tracks = [
 		object-position: center;
 		opacity: 0;
 		position: absolute;
-		transition: opacity 5s linear;
 		width: 100%;
+	}
+
+	.background.ready img {
+		transition: opacity 5s linear;
 	}
 
 	.background img.active {
@@ -385,7 +394,7 @@ const tracks = [
 	}
 
 	@media (hover: hover) and (pointer: fine) {
-		.background img {
+		.background.ready img {
 			transition-duration: 120ms;
 		}
 
@@ -456,7 +465,7 @@ const tracks = [
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.background img {
+		.background.ready img {
 			transition: none;
 		}
 
@@ -468,6 +477,7 @@ const tracks = [
 </style>
 
 <script>
+	const background = document.querySelector<HTMLElement>(".background");
 	const images = document.querySelectorAll<HTMLImageElement>(".background img");
 	const cover = document.querySelector<HTMLElement>(".cover");
 	const front = document.querySelector<HTMLButtonElement>(".front");
@@ -483,6 +493,18 @@ const tracks = [
 	let snapDirection = 1;
 	let snapTimer = 0;
 	let snapping = false;
+
+	function enableBackgroundTransitions() {
+		background?.classList.add("ready");
+	}
+
+	const firstImage = images.item(0);
+	if (firstImage.complete) {
+		firstImage.decode().catch(() => {}).finally(enableBackgroundTransitions);
+	} else {
+		firstImage.addEventListener("load", enableBackgroundTransitions, { once: true });
+		firstImage.addEventListener("error", enableBackgroundTransitions, { once: true });
+	}
 
 	function show(index: number) {
 		frame = index % images.length;
